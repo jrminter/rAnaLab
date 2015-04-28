@@ -1,9 +1,9 @@
 Package: rAnaLab
 Title: What the Package Does (one line, title case)
-Version: 0.0.0.90
+Version: 0.0.0.91
 Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
 Maintainer: John Minter <jrminter@gmail.com>
 Description: This package provides functions for data analysis by analytical scientists. It provides wrapper functions to produce publication quality scientific scatter plots that encapsulates low-level R graphics.
-Depends: R (>= 3.2.0)
+Depends: R (>= 3.2.0), boot
 License: GPL (>= 2)
 LazyData: true
