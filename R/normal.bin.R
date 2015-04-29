@@ -10,7 +10,7 @@
 #'
 #' @examples
 #'
-#' require(rAnaLab)
+#' library(rAnaLab)
 #' # data
 #' data("diam", package = "rAnaLab")
 #' l.b <- normal.bin(diam[,1])

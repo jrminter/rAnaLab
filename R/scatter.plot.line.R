@@ -4,38 +4,22 @@
 #' and perform an optional linear regression.
 #'
 #' @param x vector of 'X' values
-#'
 #' @param y vector of 'Y' values
-#'
 #' @param delta vector of 'std dev' values (default NULL)
-#'
 #' @param bErrorBars Boolean  (default FALSE) to show error bars
 #' @param bReg Boolean  (default FALSE) to do regression
-#'
 #' @param str.x  "X"
-#'
 #' @param str.y "Y"
-#'
 #' @param str.title "Plot"
-#'
 #' @param v.cex 1.2
-#'
 #' @param a.cex 1.2
-#'
 #' @param t.cex 1.2
-#'
 #' @param st.cex 1.2
-#'
 #' @param lw.fit 2
-#'
 #' @param lw.pts 2
-#'
 #' @param lw.bars 2
-#'
 #' @param lw.ax  3
-#'
 #' @param len.bars 0.075
-#'
 #' @param i.digits 4
 #'
 #' @examples
