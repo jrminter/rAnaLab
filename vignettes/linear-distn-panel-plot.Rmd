@@ -1,0 +1,18 @@
+---
+title: "Linear Distribution Panel Plot"
+author: "John Minter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, fig.width=7}
+library(rAnaLab)
+oMar <- par(mar=c(5.1, 4.1, 0.5, 0.1))
+linear.distn.panel.plot(rAnaLab::diam$ecd.nm,
+                        distn.lab="ECD [nm]")
+par(mar=oMar)
+```

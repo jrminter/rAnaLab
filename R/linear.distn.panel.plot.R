@@ -2,11 +2,11 @@
 #'
 #' Computes a histogram with linear binning, plotting the
 #' mean and kernel density as well. Does a boxplot and a
-#'qqplot, all in a single panel.
+#' qqplot, all in a single panel.
 #'
 #' @param v.dat A data vector
 #' @param n.brks Number of breaks for the histogram  (default 500)
-#' @param distn.lab Label for distribution (default NULL)
+#' @param distn.lab Label for distribution (default "")
 #' @param hist.legend Show histogram legend (default TRUE)
 #' @param legend.loc Legend location (default 'topright')
 #' @param kern.bw kernel for smoothing (default "nrd0")
@@ -17,7 +17,7 @@
 #' @export
 #'
 linear.distn.panel.plot <-
-function(v.dat, n.brks=50, distn.lab=NULL,
+function(v.dat, n.brks=50, distn.lab="",
          hist.legend=TRUE, legend.loc='topright',
          kern.bw = "nrd0",
          plt.median=TRUE, scale.mult=1.2, ...){
