@@ -1,6 +1,6 @@
 #' Generate a scatterplot
 #'
-#' Generate a scatter plot for a bfigure.
+#' Generate a scatter plot for a figure.
 #'
 #' @param x A vector of independent values
 #' @param y A vector of independent values

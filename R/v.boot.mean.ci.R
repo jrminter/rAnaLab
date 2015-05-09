@@ -11,7 +11,7 @@
 #'
 #' @import boot
 #'
-v.boot.mean.ci <- function(x, nSamples=999  ){
+v.boot.mean.ci <- function(x, nSamples=999){
 
   # define the functions we need
   mean.boot <- function(x, idx) {
