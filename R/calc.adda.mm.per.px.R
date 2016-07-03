@@ -6,10 +6,10 @@
 #' for subsampling (e.g. to 1024 pixels) for a given image within the
 #' AnalySIS software
 #'
-#' @param px.per.unit 
+#' @param px.per.unit - The number of pixels per unnit
 #' @param x.px vector of 'Y' values
 #' @param unit.fact vector of 'std dev' values (default NULL)
-#' 
+#'
 #' @return px.per.mm
 #'
 #' @examples

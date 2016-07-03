@@ -1,13 +1,16 @@
 Package: rAnaLab
 Title: Helper Functions for the Analytical Laboratory
-Version: 0.0.1.4
+Version: 0.0.1.5
 Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
 Maintainer: John Minter <jrminter@gmail.com>
 Description: This package provides functions for data analysis by analytical
     scientists. It provides wrapper functions to produce publication quality
-    scientific scatter plots that encapsulates low-level R graphics.
+    scientific scatter plots that encapsulates low-level R graphics. Slowly
+    adding ggplot2 functionz
 Depends:
-    R (>= 3.2.0)
+    R (>= 3.2.0),
+    ggplot2,
+    gridExtra
 Imports:
     boot
 Suggests:
