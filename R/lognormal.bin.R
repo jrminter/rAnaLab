@@ -1,4 +1,4 @@
-#' single mode lognormal distribution binninh
+#' single mode lognormal distribution binning
 #'
 #'Computes equally-spaced logarithmic bins from a vector
 #'and computes the parameters for a single mode lognormal
