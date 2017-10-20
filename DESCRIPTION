@@ -1,6 +1,6 @@
 Package: rAnaLab
 Title: Helper Functions for the Analytical Laboratory
-Version: 0.0.1.5
+Version: 0.0.1.6
 Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
 Maintainer: John Minter <jrminter@gmail.com>
 Description: This package provides functions for data analysis by analytical
@@ -12,11 +12,12 @@ Depends:
     ggplot2,
     gridExtra
 Imports:
-    boot
+    boot,
+    animation
 Suggests:
     testthat,
     knitr
 License: GPL (>= 2)
 LazyData: true
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
