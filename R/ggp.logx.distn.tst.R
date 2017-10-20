@@ -18,7 +18,7 @@
 #' binned <- make.log.bin.df(l.b)
 #' print(head(binned))
 #'
-#' plt <- ggp.logx.distn(binned,
+#' plt <- ggp.logx.distn.tst(binned,
 #'                       "AgX Grain Diameter",
 #'                       x.units=-9,
 #'                       d.max=0.025)

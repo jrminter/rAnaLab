@@ -1,0 +1,98 @@
+---
+title: "Lognormal Distribution Plot"
+author: "John Minter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+First load the test data
+
+```{r loadData, message=FALSE}
+library(rAnaLab)
+library(pander)
+data(diam)
+pander(summary(diam))
+```
+
+We have `r nrow(diam)` individual measurements of the equivalent
+circular diameter of a silver halide photographic emulsion. To be
+consistent with the usual colloid science terminology, we will
+henceforth use the term **dispersion**.  These were collected using a
+Gatan slow scan CCD camera in a FEI CM20T TEM using a Gatan cooling
+holder at -170C. This minimizes radiolysis of the AgX particles.
+
+Next we bin the data and look at the output.
+
+```{r}
+l.b <- rb.lognormal.bin(diam[,1])
+
+print(str(l.b))
+```
+The function outputs a list that contains three elements:
+
+1. The first item is a R dataframe. The dataframe contains four vectors:
+
+- The log of the log of the diameter (logx). In this case it is the 
+**midpoint** of the bin.
+- The diameter (x). Again, the midpoint of the bin.
+
+- The counts (cts), the number of features measured that were compliant
+with the agglomeration criteria.
+
+- The density (measured from R's histogram). In this case it is the
+fraction of the particles in the bin.
+
+2. The second item in the list is the mean log diameter. For a single
+mode log-normal distribution, the **geometric mean diameter** is 
+`exp(mean(log(d)))`.
+
+3. The third item in the list is the standard deviation of the log
+diameter. For a single mode log-normal distribution, the
+**geometric standard diameter** is `exp(sd(log(d)))`.
+
+
+next, we want to create a data frame for plotting with `ggplot2`.
+
+
+```{r, makeDataFrame}
+binned <- make.log.bin.df(l.b)
+pander(head(binned))
+```
+
+And look at the high end
+
+```{r, highDiam}
+pander(tail(binned))
+```
+
+We want to get a first view of a plot. There are problems passing
+`waver()` to `ggplot2` from a package, so I developed the function
+`gp.logx.distn.tst` to use mostly defaults.
+
+```{r, testPlot, fig.width=7}
+plt <- ggp.logx.distn.tst(binned,
+                          "AgX Grain Diameter",
+                           x.units=-9)
+
+print(plt)
+```
+
+Finally, we can pass all the controls to the `ggp.logx.distn` for a 
+final plot
+
+
+```{r, finalPlot, fig.width=7}
+plt <- ggp.logx.distn(binned,
+                      "AgX Grain Diameter",
+                       x.units=-9,
+                       d.max=0.025,
+                       limits=c(50, 500),
+                       breaks=c(50, 100, 500),
+                       minor_breaks=c( 60, 70, 80, 90, 200, 300, 400))
+
+print(plt)
+```

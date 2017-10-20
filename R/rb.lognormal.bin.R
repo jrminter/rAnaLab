@@ -14,7 +14,7 @@
 #' library(rAnaLab)
 #' # data
 #' data(diam)
-#' l.b <- lognormal.bin(diam[,1])
+#' l.b <- rb.lognormal.bin(diam[,1], )
 #' print(str(l.b))
 #'
 #'
