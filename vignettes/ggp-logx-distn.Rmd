@@ -25,10 +25,11 @@ henceforth use the term **dispersion**.  These were collected using a
 Gatan slow scan CCD camera in a FEI CM20T TEM using a Gatan cooling
 holder at -170C. This minimizes radiolysis of the AgX particles.
 
-Next we bin the data and look at the output.
+Next we bin the data and look at the output. We want to use a reference
+bin diameter of 10.0 nm and specify the 8^th^ roor of 2..
 
 ```{r}
-l.b <- rb.lognormal.bin(diam[,1])
+l.b <- rb.lognormal.bin(diam[,1], n.root.2=8.0,  base.val=10.0)
 
 print(str(l.b))
 ```
