@@ -17,7 +17,8 @@ Imports:
     pander
 Suggests:
     testthat,
-    knitr
+    knitr,
+    rmarkdown
 License: GPL (>= 2)
 LazyData: true
 VignetteBuilder: knitr
