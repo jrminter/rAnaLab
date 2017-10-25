@@ -1,0 +1,111 @@
+---
+title: "Simulating Lognormal Particle Size Distributions"
+author: "John Minter"
+date: "Last updated: 2017-10-25"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Simulating Lognormal Particle Size Distributions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(rAnaLab))))
+```
+We want to simulate a lognormal particle size distribution and
+demonstrate the properties of the distribution. First, load the
+libraries we need and demonstrate the generation of the breaks for
+lognormal binning of a real dataset. We will plot the separation of
+the bin breaks.
+
+```{r loadLibraries, fig.width=7, fig.height=3, fig.cap="Note the increased separation between the bin breaks"}
+library(rAnaLab)
+library(pander)
+
+data(diam)
+x <- calc.ln.bin.breaks(diam[,1], n.root.2=4, base.val=0.1)
+y <- rep(1,length(x))
+df <- data.frame(x=x, y=y)
+plt <- ggplot() +
+           geom_point(data=df, aes(x=x, y=y),
+                      colour="darkblue") +
+           ylim(0.75, 1.25) +
+           xlab("bin break position [nm]") +
+           ylab("") 
+print(plt)
+```
+
+Let's simulate a single mode lognormal distribution. We start by setting
+variables for the **geometric mean diameter** (`gmd`) and the
+**geometric standard deviation** (`gsd`). We will bin the results
+with bins separated by the **8^th^ root of 2** and with a
+**reference bin break** at 0.1 nm. First we will take a peek at the
+structure of the output that `sim.lognormal()` produces.
+
+```{r simulateLognormal}
+num <- 100000
+gmd <- 50
+gsd <- 2.0
+
+sim <- sim.lognormal(gmd, gsd, num, 8, 0.1)
+
+print(str(sim))
+```
+
+Note that we have a dataframe with entries for the diameter (in this
+case the **midpoint** of the bin), the associated counts (the
+**number of particles in each bin**), and the density (the 
+**fraction of particles** in each bin). This is prety much everything
+that we need for a plot and subsequent analysis.
+
+Let's calulate some undelying parameters of the lognormal distribution
+and plot the results.
+
+```{r, plotDistribution, fig.width=7, fig.cap="A single mode lognormal distribution. The **mode** is shown in red, the **geometric mean diameter** is shown in blue."}
+mu <- log(gmd)
+sigma <- log(gsd)
+mode <- exp(mu - sigma^2)
+lt <- 1.1
+
+diaPlt <- ggplot() +
+              geom_point(data=sim, aes(x=diam, y=dens), colour="darkblue") +
+              scale_x_log10() +
+              xlab("Equivalent Circular Diameter (ECD) [nm]") +
+              ylab("density") +
+              ggtitle(sprintf("%s (n=%d)", "lognormal distribution", num)) +
+              theme(axis.text=element_text(size=12),
+                   axis.title=element_text(size=12),
+                   plot.title=element_text(hjust = 0.5)) +
+              geom_vline(xintercept=gmd, color="blue", size=lt) + 
+              geom_vline(xintercept=mode, color="red", size=lt)
+
+print(diaPlt)
+
+```
+
+Note that the **mode** of the distribution (the peak) is **below**
+the value of the **geometric mean diameter**, i.e. the point above
+which **half the particles occur**.
+
+Finally, let's print out a table
+
+```{r makeTable, results='asis'}
+iDigits <- 4
+feature <- c("mu",
+             "sigma",
+             "mode", 
+             "gmd",
+             "gsd")
+value <- c(sprintf("%.4f", round(mu,iDigits)),
+           sprintf("%.4f", round(sigma, iDigits)),
+           sprintf("%.4f", round(mode, iDigits)),
+           sprintf("%.4f", round(gmd, iDigits)),
+           sprintf("%.4f", round(gsd, iDigits)))
+
+res <- data.frame(feature=feature, value=value)
+pandoc.table(res, justify = c('left', 'right'))
+```
+
+

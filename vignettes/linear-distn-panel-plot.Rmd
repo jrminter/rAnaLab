@@ -1,10 +1,10 @@
 ---
 title: "Linear Distribution Panel Plot"
 author: "John Minter"
-date: "`r Sys.Date()`"
+date: "Last updated: 2017-10-25"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Linear Distribution Panel Plot}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
