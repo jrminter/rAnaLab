@@ -57,10 +57,10 @@ print(str(sim))
 Note that we have a dataframe with entries for the diameter (in this
 case the **midpoint** of the bin), the associated counts (the
 **number of particles in each bin**), and the density (the 
-**fraction of particles** in each bin). This is prety much everything
+**fraction of particles** in each bin). This is everything
 that we need for a plot and subsequent analysis.
 
-Let's calulate some undelying parameters of the lognormal distribution
+Let's calculate some important parameters of the lognormal distribution
 and plot the results.
 
 ```{r, plotDistribution, fig.width=7, fig.cap="A single mode lognormal distribution. The **mode** is shown in red, the **geometric mean diameter** is shown in blue."}
