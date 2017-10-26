@@ -20,7 +20,7 @@ libraries we need and demonstrate the generation of the breaks for
 lognormal binning of a real dataset. We will plot the separation of
 the bin breaks.
 
-```{r loadLibraries, fig.width=7, fig.height=3, fig.cap="Note the increased separation between the bin breaks"}
+```{r loadLibraries, fig.width=7, fig.height=3, fig.cap="Note the increased separation between the bin breaks when plotted on a linear scale."}
 library(rAnaLab)
 library(pander)
 
