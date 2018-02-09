@@ -14,12 +14,14 @@
 #'
 #' @param  bins (default 30) - number of histogram bins
 #'
+#' @param ti A title for the top (default '')
+#'
 #' @return none - just does the grid plot
 #'
 #' @export
 
 gg.panel.plot <- function(df, col.num, nam='ECD', un='nm',
-                          lw=1.25, bins=30){
+                          lw=1.25, bins=30, ti=''){
   lightblue <- "#3A89C9"
   valLabel <- paste0(nam, " [", un, "]")
   vec <- df[, col.num]
@@ -45,5 +47,9 @@ gg.panel.plot <- function(df, col.num, nam='ECD', un='nm',
     xlab("normal quantiles") + ylab(valLabel) +
     geom_abline(slope=slope, intercept=int, colour='red', size=lw)
 
-  grid.arrange(plot1, plot2, plot3, ncol=3)
+  if (nchar(ti>0)) {
+    grid.arrange(plot1, plot2, plot3, ncol=3, top = ti)
+  } else {
+    grid.arrange(plot1, plot2, plot3, ncol=3)
+  }
 }
