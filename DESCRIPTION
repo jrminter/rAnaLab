@@ -1,6 +1,6 @@
 Package: rAnaLab
 Title: Helper Functions for the Analytical Laboratory
-Version: 0.0.1.12
+Version: 0.0.1.13
 Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
 Maintainer: John Minter <jrminter@gmail.com>
 Description: This package provides functions for data analysis by analytical
@@ -14,7 +14,8 @@ Depends:
 Imports:
     boot,
     animation,
-    pander
+    pander,
+    EnvStats
 Suggests:
     testthat,
     knitr,
