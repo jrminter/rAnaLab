@@ -1,0 +1,25 @@
+---
+title: "Eagleson's Law"
+author: "John Minter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Eagleson's Law}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+Print out Eagleson's Law.
+
+Credit: [reddit](https://i.redd.it/n7dqgq1zwm3z.png).
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, comment=NA)
+```
+
+
+```{r loadData, message=FALSE}
+library(rAnaLab)
+eaglesons.law()
+```
+
