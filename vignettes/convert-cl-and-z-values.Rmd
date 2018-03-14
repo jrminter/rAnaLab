@@ -1,0 +1,40 @@
+---
+title: "Convert confidence intervals and Z-values"
+author: "John Minter"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Convert confidence intervals and Z-values}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+We want to convert confidence intervals and Z-values.
+
+Functions were developed from ideas presented on [stack-exchange](https://datascience.stackexchange.com/questions/10093/how-to-find-a-confidence-level-given-the-z-value).
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, comment=NA)
+```
+
+First, let's convert a series confidence levels to Z values
+
+```{r confLevelToZ, message=FALSE}
+library(rAnaLab)
+
+conf.levs <- c(0.500, 0.750, 0.800, 0.900, 0.950, 
+               0.975, 0.990, 0.995, 0.998, 0.999)
+
+z.vals <- unlist(lapply(conf.levs, cl.to.z))
+print(z.vals)
+```
+
+Next, let's check our work and convert our Z values to confidence
+levels.
+
+```{r zValuesToConfLevels, message=FALSE}
+c.ls <- unlist(lapply(z.vals, z.to.cl))
+print(c.ls)
+
+```
+

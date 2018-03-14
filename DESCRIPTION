@@ -1,6 +1,6 @@
 Package: rAnaLab
 Title: Helper Functions for the Analytical Laboratory
-Version: 0.0.1.15
+Version: 0.0.1.16
 Authors@R: person("Minter", "John", email= "jrminter@gmail.com", role = c("aut", "cre"))
 Maintainer: John Minter <jrminter@gmail.com>
 Description: This package provides functions for data analysis by analytical
