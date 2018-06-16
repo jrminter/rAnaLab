@@ -1,0 +1,37 @@
+---
+title: "Build a k-means pallette from a png image"
+author: "John Minter"
+date: "Last updated: 2018-06-15"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Build a k-means pallette from a png image}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
+suppressWarnings(suppressMessages(suppressPackageStartupMessages(library(rAnaLab))))
+```
+
+This function was developed from an example from
+[www.milanor.net](http://www.milanor.net/blog/build-color-palette-from-image-with-paletter/).
+We load a **png** image of a color pallette called `rocks-in-the-river` from
+(www.color-hex.com)[http://www.color-hex.com/color-palette/61776].
+We first load a pallette image from our system data and then call the
+function. The function returns an image with swatches with
+the hex values and a list of the hex values.
+
+```{r, comment=NA, fig.width=4, fig.align='center'}
+library(rAnaLab)
+fi <- system.file("extdata", "rocks-in-the-river.png", package = "rAnaLab")
+res <- kmeans_pallette(fi)
+res
+```
+
+The values from the site are:
+
+```{r}
+rocks_int_the_river <- c('#4e5166','#7c90a0','#b5aa9d','#b9b7a7','#747274')
+```
+
+So we obtained the expected answer.

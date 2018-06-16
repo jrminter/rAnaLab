@@ -4,17 +4,20 @@
 #'
 #' @param pngFile The png file to process
 #'
-#' @return a list (kmeans, rgb(k_means$centers))
+#' @return a list ( rgb(k_means$centers))
 #'
 #' @import png
 #' @import scales
 #'
 #' @examples
-#' # Not run
+#' library(rAnaLab)
+#' fi <- system.file("extdata", "rocks-in-the-river.png", package = "rAnaLab")
+#' res <- kmeans_pallette(fi)
+#' res
 #'
 #' @export
 #'
-kmeans_pallete <- function(pngFile){
+kmeans_pallette <- function(pngFile){
   # adapted from
   # http://www.milanor.net/blog/build-color-palette-from-image-with-paletter/
   img <- readPNG(pngFile)
@@ -26,7 +29,7 @@ kmeans_pallete <- function(pngFile){
                          B = as.vector(img[,,3]))
   k_means <- kmeans(img_rgb[,c("R","G","B")], centers = 5, iter.max = 30)
   show_col(rgb(k_means$centers))
-  ret <- c(k_means, rgb(k_means$centers))
+  ret <- rgb(k_means$centers)
   ret
 }
 
