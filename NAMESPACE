@@ -3,6 +3,7 @@
 export(calc.adda.mm.per.px)
 export(calc.ln.bin.breaks)
 export(calc.normal.lognormal.stats)
+export(calc.rho.t.g.cm2)
 export(cl.to.z)
 export(eaglesons.law)
 export(figure.scatter.plot)
