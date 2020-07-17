@@ -18,8 +18,6 @@
 #'      calc.adda.mm.per.px(148.77))
 #' print(x)
 #'
-
-#'
 #' @export
 #'
 #'
